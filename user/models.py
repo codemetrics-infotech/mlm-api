@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.hashers import BCryptSHA256PasswordHasher
 # Create your models here.
 
 class BasicDetail(models.Model):

@@ -3,8 +3,9 @@ from rest_framework import viewsets
 from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
-from rest_framework.authentication import SessionAuthentication
-from rest_framework.permissions import DjangoModelPermissions
+from rest_framework_simplejwt.authentication import JWTAuthentication
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+from rest_framework.permissions import DjangoModelPermissions, IsAuthenticated
 from .models import BasicDetail, ParmanentAddress
 from .serializers import BasicDetailsSerializer, ParmanentAddressSerializer, UserSerializer
 
@@ -22,5 +23,5 @@ class ParmanentAddressAPI(viewsets.ModelViewSet):
 class UserAPI(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    authentication_classes = [SessionAuthentication]
-    permission_classes = [DjangoModelPermissions]
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]
