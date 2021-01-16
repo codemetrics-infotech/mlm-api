@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.hashers import BCryptSHA256PasswordHasher
 # Create your models here.
 
 class BasicDetail(models.Model):
@@ -15,7 +15,7 @@ class BasicDetail(models.Model):
     pan_number = models.CharField(max_length=12)
     mobile_number = models.CharField(max_length=13)
     email = models.EmailField(max_length=30)
-    photo = models.ImageField(upload_to='user/image', default='')
+    photo = models.ImageField(upload_to='user/images',blank=True ,default='')
     referral_code = models.CharField(max_length=20)
 
     def __str__(self):
