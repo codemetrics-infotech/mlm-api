@@ -11,6 +11,7 @@ router.register('user', views.UserAPI, basename='user')
 urlpatterns = [
     path('', include(router.urls)),
     path('auth/', include('rest_framework.urls')),
+    path('userlist/', views.UserListAPI.as_view(), name='userlist'),
     path('gettoken/', TokenObtainPairView.as_view(), name='get_token'),
     path('refreshtoken/', TokenRefreshView.as_view(), name='refresh_token'),
     path('velidatetoken/', TokenVerifyView.as_view(), name='velidate_token'),
